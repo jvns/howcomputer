@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define NMEMBERS 256
+#define NMEMBERS 65536
 
 int main(int argc, char** argv) {
     if (argc < 1) {
@@ -20,6 +20,7 @@ int main(int argc, char** argv) {
         if (amount_read == 0) {
             break;
         }
+
         for (i = 0; i < amount_read; i++) {
             result += data[i];
         }

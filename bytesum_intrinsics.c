@@ -6,7 +6,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <emmintrin.h>
-uint32_t sum_array(const uint8_t a[], int n)
+char sum_array(const uint8_t a[], int n)
 {
     const __m128i vk0 = _mm_set1_epi8(0);       // constant vector of all 0s for use with _mm_unpacklo_epi8/_mm_unpackhi_epi8
     const __m128i vk1 = _mm_set1_epi16(1);      // constant vector of all 1s for use with _mm_madd_epi16
@@ -16,7 +16,7 @@ uint32_t sum_array(const uint8_t a[], int n)
 
     for (i = 0; i < n; i += 16)
     {
-        __m128i v = _mm_load_si128((__m128i)&a[i]);      // load vector of 8 bit values
+        __m128i v = _mm_load_si128((__m128i *)&a[i]);      // load vector of 8 bit values
         __m128i vl = _mm_unpacklo_epi8(v, vk0); // unpack to two vectors of 16 bit values
         __m128i vh = _mm_unpackhi_epi8(v, vk0);
         vsum = _mm_add_epi32(vsum, _mm_madd_epi16(vl, vk1));
@@ -29,7 +29,7 @@ uint32_t sum_array(const uint8_t a[], int n)
     vsum = _mm_add_epi32(vsum, _mm_srli_si128(vsum, 8));
     vsum = _mm_add_epi32(vsum, _mm_srli_si128(vsum, 4));
     sum = _mm_cvtsi128_si32(vsum);
-    return sum;
+    return (char)sum;
 }
 
 int main(int argc, char** argv) {

@@ -11,6 +11,13 @@ mmap: bytesum_mmap.c
 	gcc -Ofast -o bytesum_mmap bytesum_mmap.c
 	time ./bytesum_mmap *.mp4
 
+stride: bytesum_stride.c
+	gcc -Ofast -o bytesum_stride bytesum_stride.c
+
+intrinsics: bytesum_intrinsics.c
+	gcc -Ofast -o bytesum_intrinsics bytesum_intrinsics.c
+
+
 run: all
 	./bytesum bytesum
 

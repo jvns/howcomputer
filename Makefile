@@ -6,6 +6,11 @@ slow: bytesum.c
 	gcc -o bytesum_slow bytesum.c
 	time ./bytesum_slow *.mp4
 
+
+mmap: bytesum_mmap.c
+	gcc -Ofast -o bytesum_mmap bytesum_mmap.c
+	time ./bytesum_mmap *.mp4
+
 run: all
 	./bytesum bytesum
 

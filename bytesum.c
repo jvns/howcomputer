@@ -5,6 +5,7 @@
 int main(int argc, char** argv) {
     if (argc < 1) {
         printf("Too few arguments!");
+        return 0;
     }
 
     FILE *f = fopen(argv[1], "r");

@@ -15,7 +15,10 @@ stride: bytesum_stride.c
 	gcc -Ofast -o bytesum_stride bytesum_stride.c
 
 intrinsics: bytesum_intrinsics.c
-	gcc -Ofast -o bytesum_intrinsics bytesum_intrinsics.c
+	gcc -g -Ofast -o bytesum_intrinsics bytesum_intrinsics.c
+
+in_cache: bytesum_in_cache.c
+	gcc -g -Ofast -o bytesum_in_cache bytesum_in_cache.c
 
 
 run: all

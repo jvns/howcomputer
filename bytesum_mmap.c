@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
     uint64_t filesize = sb.st_size;
     printf("Size: %lu\n", filesize);
 
-    memblock = mmap(NULL, filesize, PROT_READ, MAP_SHARED, fd, 0);
+    memblock = mmap(NULL, filesize, PROT_READ, MAP_SHARED | MAP_POPULATE, fd, 0);
     if (memblock == MAP_FAILED) {
         printf("oh no it failed\n");
         return 0;

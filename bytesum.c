@@ -11,7 +11,6 @@ int main(int argc, char** argv) {
     FILE *f = fopen(argv[1], "r");
     char data[NMEMBERS];
 
-
     size_t amount_read;
     char result;
     int i;

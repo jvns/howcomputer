@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
         printf("Too few arguments!");
         return 0;
     }
-    const char *memblock;
+    const uint8_t *memblock;
     int fd;
     struct stat sb;
 
@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
         return 0;
     }
     uint64_t i;
-    char result;
+    uint8_t result;
     for (i = 0; i < filesize; i++) {
         result += memblock[i];
     }

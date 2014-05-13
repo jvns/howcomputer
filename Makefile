@@ -1,5 +1,8 @@
+CC=gcc -Ofast
+#CC=clang -O3
+
 fast: bytesum.c
-	gcc -o bytesum_fast bytesum.c -Ofast
+	$(CC) -o bytesum_fast bytesum.c
 	time ./bytesum_fast *.mp4
 
 slow: bytesum.c
@@ -8,17 +11,17 @@ slow: bytesum.c
 
 
 mmap: bytesum_mmap.c
-	gcc -Ofast -o bytesum_mmap bytesum_mmap.c
+	$(CC) -o bytesum_mmap bytesum_mmap.c
 	time ./bytesum_mmap *.mp4
 
 stride: bytesum_stride.c
-	gcc -Ofast -o bytesum_stride bytesum_stride.c
+	$(CC) -o bytesum_stride bytesum_stride.c
 
 intrinsics: bytesum_intrinsics.c
-	gcc -g -Ofast -o bytesum_intrinsics bytesum_intrinsics.c
+	$(CC) -o bytesum_intrinsics bytesum_intrinsics.c
 
 in_cache: bytesum_in_cache.c
-	gcc -g -Ofast -o bytesum_in_cache bytesum_in_cache.c
+	$(CC) -o bytesum_in_cache bytesum_in_cache.c
 
 
 run: all

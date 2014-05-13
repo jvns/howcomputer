@@ -23,6 +23,8 @@ intrinsics: bytesum_intrinsics.c
 in_cache: bytesum_in_cache.c
 	$(CC) -o bytesum_in_cache bytesum_in_cache.c
 
+prefetch: bytesum_prefetch.c
+	$(CC) -o bytesum_prefetch bytesum_prefetch.c -lrt
 
 run: all
 	./bytesum bytesum

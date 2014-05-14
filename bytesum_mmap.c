@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -7,9 +8,9 @@
 #include <fcntl.h>
 
 int main(int argc, char** argv) {
-    if (argc < 1) {
-        printf("Too few arguments!");
-        return 0;
+    if (argc < 2) {
+        sprintf(stderr, "Too few arguments!");
+        return EXIT_FAILURE;
     }
     const uint8_t *memblock;
     int fd;
@@ -22,8 +23,8 @@ int main(int argc, char** argv) {
 
     memblock = mmap(NULL, filesize, PROT_READ, MAP_SHARED | MAP_POPULATE, fd, 0);
     if (memblock == MAP_FAILED) {
-        printf("oh no it failed\n");
-        return 0;
+        perror("oh no it failed");
+        return EXIT_FAILURE;
     }
     uint64_t i;
     uint8_t result;
@@ -31,6 +32,5 @@ int main(int argc, char** argv) {
         result += memblock[i];
     }
     printf("The answer is: %d\n", result);
-    return 0;
+    return EXIT_SUCCESS;
 }
-

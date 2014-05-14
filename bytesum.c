@@ -3,9 +3,9 @@
 #define NMEMBERS 65536
 
 int main(int argc, char** argv) {
-    if (argc < 1) {
+    if (argc < 2) {
         printf("Too few arguments!");
-        return 0;
+        return 1;
     }
 
     FILE *f = fopen(argv[1], "r");

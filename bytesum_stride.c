@@ -9,7 +9,7 @@
 int main(int argc, char** argv) {
     if (argc < 2) {
         printf("Too few arguments!");
-        return 0;
+        return 1;
     }
     const char *memblock;
     int fd;
@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
     memblock = mmap(NULL, filesize, PROT_READ, MAP_SHARED, fd, 0);
     if (memblock == MAP_FAILED) {
         printf("oh no it failed\n");
-        return 0;
+        return 2;
     }
     uint64_t i;
     uint64_t j;
